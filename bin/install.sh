@@ -19,30 +19,12 @@ log_error() {
 
 # `runsh`
 
-## Assert Haskell is installed
-assert_runhaskell() {
-  command -v runhaskell >/dev/null
+## Asserts a command is installed
+assert_installed() {
+  command -v "$1" >/dev/null
   if [ $? -ne 0 ]; then
-    log_error "Haskell (runhaskell) not installed."
+    log_error "$2" "not installed."
     exit 1
-  fi
-}
-
-## Assert Cabal is installed
-assert_cabal() {
-  command -v cabal >/dev/null
-  if [ $? -ne 0 ]; then
-    log_error "Cabal not installed."
-    exit 2
-  fi
-}
-
-## Assert Git is installed
-assert_git() {
-  command -v git >/dev/null
-  if [ $? -ne 0 ]; then
-    log_error "Git not installed."
-    exit 3
   fi
 }
 
@@ -172,9 +154,9 @@ Example:
 EOF
 }
 
-assert_runhaskell
-assert_cabal
-assert_git
+assert_installed runhaskell "Haskell (runhaskell)"
+assert_installed cabal "Cabal"
+assert_installed git "Git"
 get_install_dir
 assert_install_dir_is_empty
 clone_runhs
