@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+# Run from the script's directory
+SCRIPT_DIR=`dirname $0`
+trap 'popd &>/dev/null' EXIT
+pushd . &>/dev/null
+cd $SCRIPT_DIR
+
+# Run `cabal install`
+cd ..
+cabal install "$@"

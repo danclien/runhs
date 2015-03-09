@@ -1,6 +1,6 @@
 # runhs
 
-`runhs` is a wrapper around `runhaskell` that will automatically use a Cabal sandbox with [`turtle`](https://hackage.haskell.org/package/turtle) ([blog post](http://www.haskellforall.com/2015/01/use-haskell-for-shell-scripting.html)) and [`optparse-applicative`](https://hackage.haskell.org/package/optparse-applicative).
+`runhs` is a wrapper around `runhaskell` that will automatically use a Cabal sandbox with [`turtle`](https://hackage.haskell.org/package/turtle) ([blog post](http://www.haskellforall.com/2015/01/use-haskell-for-shell-scripting.html)).
 
 **Note:** This is an experiment. Only tested with OS X 10.10.2, GHC 7.8.3, and cabal 1.22 so far.
 
@@ -19,6 +19,20 @@
 * Put `runhs` into your `PATH`. Default location is `$HOME/.runhs/bin`.
 * Restart your shell to use your new `PATH`.
 
+### Installing to a different directory (experimental)
+
+Set your `RUNHS_DIR` environment variable before running the install script to the
+location you want the `runhs` installed.
+
+### Adding more libaries
+
+`runhs-install` is an alias to `cabal install` that will run in this sandbox.
+
+#### Example
+
+```
+runhs-install optparse-applicative
+```
 
 ## Usage
 
@@ -54,7 +68,5 @@ Hello, world!
 
 ## TODO
 
-* Add notes on changing the installation directory.
 * Add notes on how to do a manual installation.
-* Add notes on customizing what libraries are available to scripts.
 * Test on other operating systems to make sure it works
