@@ -1,6 +1,8 @@
 #!/bin/sh
 
-# Logging functions
+# Utility functions
+
+## Logging
 log_info() {
   echo "$(tput setaf 6)Info:   $(tput sgr 0)" "$@"
 }
@@ -17,9 +19,7 @@ log_error() {
   echo "$(tput setaf 1)Error:  $(tput sgr 0)" "$@" 1>&2
 }
 
-# `runsh`
-
-## Asserts a command is installed
+## Command
 assert_installed() {
   command -v "$1" >/dev/null
   if [ $? -ne 0 ]; then
@@ -27,6 +27,8 @@ assert_installed() {
     exit 1
   fi
 }
+
+# `runsh`
 
 ## Assert $HOME is set
 assert_home() {
