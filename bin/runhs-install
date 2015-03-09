@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 
 # Run from the script's directory
-SCRIPT_DIR=`dirname $0`
-trap 'popd &>/dev/null' EXIT
-pushd . &>/dev/null
-cd $SCRIPT_DIR
+SCRIPT_DIR=$(dirname "$0")
+trap 'popd 2>&1 /dev/null' EXIT
+pushd . >/dev/null 2>&1
+cd "$SCRIPT_DIR"
 
 # Run `cabal install`
 cd ..
